@@ -1,0 +1,13 @@
+# Write your MySQL query statement below
+
+WITH t1 as (
+    SELECT customer_number, count(customer_number) AS c 
+    FROM orders 
+    GROUP BY 
+    customer_number
+)
+
+SELECT customer_number FROM t1 WHERE c IN 
+(
+    SELECT MAX(c) FROM t1
+)
